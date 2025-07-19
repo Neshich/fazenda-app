@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=1
+
+  landing:
+    build:
+      context: .
+      dockerfile: Dockerfile.landing
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./landingpage:/app
+    stdin_open: true
+    tty: true
